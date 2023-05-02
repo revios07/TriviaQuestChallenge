@@ -16,6 +16,7 @@ namespace Trivia.UI
         private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
         private IEnumerator _changeRectTransformSize;
 
+        //Call For Open or Close LeaderBoard Pop-Up
         public void LeaderBoardCheck()
         {
             if (_changeRectTransformSize != null)
@@ -30,14 +31,14 @@ namespace Trivia.UI
             return;
         }
 
+        //LeaderBoard Pop-Up Animation
         private IEnumerator SetRectTransformsSize()
         {
-            Debug.Log(_rectTransform.position.y);
-
             float refenceResolutionY = transform.GetComponentInParent<CanvasScaler>().referenceResolution.y;
-            float target = (_rectTransform.position.y >= -refenceResolutionY / 4f) ? 0f : refenceResolutionY;
+            float targetPositionY = (_rectTransform.position.y >= -refenceResolutionY / 4f) ? 0f : refenceResolutionY;
 
-            bool isOpened = target == 0f ? true : false;
+            //Check is LeaderBoard Opened?
+            bool isOpened = targetPositionY == 0f ? true : false;
 
             while (true)
             {
