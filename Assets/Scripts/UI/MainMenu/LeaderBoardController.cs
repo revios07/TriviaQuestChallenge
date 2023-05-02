@@ -33,7 +33,9 @@ public class LeaderBoardController : MonoBehaviour
     private IEnumerator SetRectTransformsSize()
     {
         float refenceResolutionY = transform.GetComponentInParent<CanvasScaler>().referenceResolution.y;
-        float target = (_rectTransform.offsetMax.y >= refenceResolutionY / 2f) ? 0f : refenceResolutionY;
+        float target = (_rectTransform.position.y >= 0f) ? 0f : refenceResolutionY;
+
+        bool isOpened = target == 0f ? true : false;
 
         Debug.Log("Target : " + target);
         Debug.Log("Target Now : " + _rectTransform.offsetMax.y);
@@ -43,25 +45,23 @@ public class LeaderBoardController : MonoBehaviour
         {
             yield return _waitForFixedUpdate;
 
-            Debug.Log(_rectTransform.position.y);
-
-            if (_rectTransform.offsetMax.y < 1920f)
+            if (!isOpened)
             {
                 _rectTransform.position += Vector3.up * 100f * _leaderBoardMoveSpeed * Time.fixedDeltaTime;
 
-                if (_rectTransform.position.y >= refenceResolutionY / 2f)
+                if (_rectTransform.position.y >= 0f)
                     break;
             }
-            else
+            else if(isOpened)
             {
                 _rectTransform.position -= Vector3.up * 100f * _leaderBoardMoveSpeed * Time.fixedDeltaTime;
 
-                if (_rectTransform.position.y <= 0f)
+                if (_rectTransform.position.y <= -refenceResolutionY / 2f)
                     break;
             }
             //_rectTransform.offsetMax = Vector2.Lerp(_rectTransform.offsetMax, new Vector2(_rectTransform.offsetMax.x, 0f), multiplier * _leaderBoardMoveSpeed * Time.fixedDeltaTime);
 
-            Debug.Log((_rectTransform.offsetMax.y));
+            Debug.Log("Pos : " + (_rectTransform.position.y));
         }
 
         _changeRectTransformSize = null;
