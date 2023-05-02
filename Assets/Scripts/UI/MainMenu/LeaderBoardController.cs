@@ -3,67 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LeaderBoardController : MonoBehaviour
+namespace Trivia.UI
 {
-    [SerializeField]
-    [Range(1f, 100f)]
-    private float _leaderBoardMoveSpeed;
-
-    private RectTransform _rectTransform => this.gameObject.transform as RectTransform;
-    private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
-    private IEnumerator _changeRectTransformSize;
-
-    private void Start()
+    [RequireComponent(typeof(RectTransform))]
+    public class LeaderBoardController : MonoBehaviour
     {
-        //LeaderBoardCheck(true);
-    }
+        [SerializeField]
+        [Range(1f, 100f)]
+        private float _leaderBoardMoveSpeed;
 
-    public void LeaderBoardCheck()
-    {
-        if (_changeRectTransformSize != null)
-            return;
+        private RectTransform _rectTransform => this.gameObject.transform as RectTransform;
+        private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
+        private IEnumerator _changeRectTransformSize;
 
-        _changeRectTransformSize = SetRectTransformsSize();
-        StartCoroutine(_changeRectTransformSize);
-
-        return;
-        //Close LeaderBoard
-    }
-
-    private IEnumerator SetRectTransformsSize()
-    {
-        float refenceResolutionY = transform.GetComponentInParent<CanvasScaler>().referenceResolution.y;
-        float target = (_rectTransform.position.y >= 0f) ? 0f : refenceResolutionY;
-
-        bool isOpened = target == 0f ? true : false;
-
-        Debug.Log("Target : " + target);
-        Debug.Log("Target Now : " + _rectTransform.offsetMax.y);
-
-
-        while (true)
+        public void LeaderBoardCheck()
         {
-            yield return _waitForFixedUpdate;
-
-            if (!isOpened)
+            if (_changeRectTransformSize != null)
             {
-                _rectTransform.position += Vector3.up * 100f * _leaderBoardMoveSpeed * Time.fixedDeltaTime;
-
-                if (_rectTransform.position.y >= 0f)
-                    break;
+                StopCoroutine(_changeRectTransformSize);
+                _changeRectTransformSize = null;
             }
-            else if(isOpened)
-            {
-                _rectTransform.position -= Vector3.up * 100f * _leaderBoardMoveSpeed * Time.fixedDeltaTime;
 
-                if (_rectTransform.position.y <= -refenceResolutionY / 2f)
-                    break;
-            }
-            //_rectTransform.offsetMax = Vector2.Lerp(_rectTransform.offsetMax, new Vector2(_rectTransform.offsetMax.x, 0f), multiplier * _leaderBoardMoveSpeed * Time.fixedDeltaTime);
+            _changeRectTransformSize = SetRectTransformsSize();
+            StartCoroutine(_changeRectTransformSize);
 
-            Debug.Log("Pos : " + (_rectTransform.position.y));
+            return;
         }
 
-        _changeRectTransformSize = null;
+        private IEnumerator SetRectTransformsSize()
+        {
+            Debug.Log(_rectTransform.position.y);
+
+            float refenceResolutionY = transform.GetComponentInParent<CanvasScaler>().referenceResolution.y;
+            float target = (_rectTransform.position.y >= -refenceResolutionY / 4f) ? 0f : refenceResolutionY;
+
+            bool isOpened = target == 0f ? true : false;
+
+            while (true)
+            {
+                yield return _waitForFixedUpdate;
+
+                //LeaderBoard is Close --> Open LeaderBoard
+                if (!isOpened)
+                {
+                    _rectTransform.position += Vector3.up * 100f * _leaderBoardMoveSpeed * Time.fixedDeltaTime;
+
+                    if (_rectTransform.position.y >= 0f)
+                        break;
+                }
+                //LeaderBoard is Open --> Close LeaderBoard
+                else if (isOpened)
+                {
+                    _rectTransform.position -= Vector3.up * 100f * _leaderBoardMoveSpeed * Time.fixedDeltaTime;
+
+                    if (_rectTransform.position.y <= -refenceResolutionY / 2f)
+                        break;
+                }
+            }
+
+            _changeRectTransformSize = null;
+        }
     }
 }
+
