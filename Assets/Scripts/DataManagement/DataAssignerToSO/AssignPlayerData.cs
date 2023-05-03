@@ -18,7 +18,6 @@ namespace Trivia.Data
             yield return new WaitUntil(() => isLoaded);
 
             players = GetText<jsonDataPlayers>(jsonText);
-            Debug.Log(players.data[0].nickname);
         }
 
         public jsonDataPlayers GetPlayers()

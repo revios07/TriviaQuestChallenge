@@ -50,7 +50,7 @@ namespace Trivia.GamePlay
             else if (_timeForQuestion >= 0f)
             {
                 _timeForQuestion -= Time.deltaTime;
-                _timerText.text = "Timer : " + _timeForQuestion.ToString("1");
+                _timerText.text = "Timer : " + _timeForQuestion.ToString(".0");
 
                 if (_timeForQuestion <= _timeData.GetAnswerTime() / 3f)
                 {
