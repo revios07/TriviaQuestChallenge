@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Trivia.Interfaces;
 using UnityEngine.SceneManagement;
+using Trivia.Management;
 
 namespace Trivia.UI
 {
@@ -12,6 +13,7 @@ namespace Trivia.UI
     {
         [SerializeField]
         private float _minLoadTime = 1f;
+        private int targetLevel = 0;
 
         private Slider _loadingSlider;
         private TMP_Text _loadingText;
@@ -30,14 +32,17 @@ namespace Trivia.UI
 
         private void Start()
         {
-            StartAnimation();
+            targetLevel = SceneManagement.Instance.targetLoadLevel;
+
+            if (targetLevel != SceneManager.GetActiveScene().buildIndex)
+                StartAnimation();
         }
         #endregion
 
         #region Interface Implementation
         public void StartAnimation()
         {
-            StartCoroutine(LoadingAnimations());
+            StartCoroutine(LoadingAnimations(targetLevel));
         }
 
         public void StopAnimation()
@@ -46,11 +51,11 @@ namespace Trivia.UI
         }
         #endregion
 
-        private IEnumerator LoadingAnimations()
+        private IEnumerator LoadingAnimations(int targetLevel)
         {
             yield return _waitForFixedUpdate;
 
-            int buildIndex = 1;
+            int buildIndex = targetLevel;
             AsyncOperation operation = SceneManager.LoadSceneAsync(buildIndex);
             operation.allowSceneActivation = false;
 
@@ -70,7 +75,7 @@ namespace Trivia.UI
                 _loadingText.text = _loadingTexts[counter];
 
                 _animationTimerLoading += 10f * Time.fixedDeltaTime;
-                if(_animationTimerLoading > 1f)
+                if (_animationTimerLoading > 1f)
                 {
                     ++counter;
                     _animationTimerLoading = 0f;
@@ -80,7 +85,7 @@ namespace Trivia.UI
                 }
                 //---
 
-                if(timer <= 0f)
+                if (timer <= 0f)
                 {
                     Time.timeScale = 1f;
                     operation.allowSceneActivation = true;

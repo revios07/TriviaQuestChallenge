@@ -7,9 +7,46 @@ namespace Trivia.Management
 {
     public class SceneManagement : MonoBehaviour
     {
-        public int GetSceneIndex()
+        private static SceneManagement instance;
+
+        public static SceneManagement Instance
         {
-            return SceneManager.GetActiveScene().buildIndex;
+            get
+            {
+                if (instance == null)
+                {
+                    GameObject createdGameObject = new GameObject("SceneManagement");
+                    createdGameObject.AddComponent<SceneManagement>();
+                    return instance;
+                }
+
+                return instance;
+            }
+
+            private set
+            {
+                instance = value;
+            }
+        }
+        public int targetLoadLevel { get; private set; } = 1; //Load Default Level First => MainMenu for this
+
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+                return;
+            }
+
+            Destroy(gameObject);
+        }
+
+        public void LoadLevel(int targetLevel)
+        {
+            SceneManager.LoadScene(0);
+            targetLoadLevel = targetLevel;
         }
     }
 }
