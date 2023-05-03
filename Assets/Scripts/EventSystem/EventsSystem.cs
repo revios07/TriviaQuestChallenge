@@ -9,19 +9,23 @@ namespace Trivia.Management
         #region Delegates
         //Game Base Calls
         public delegate void OnGameStarted();
+        public delegate void OnNextQuestionLoaded();
 
         //Player Conditions
+        public delegate void OnPlayerSelectedAnswer();
         public delegate void OnPlayerSelectCorrect();
         public delegate void OnPlayerNotSelectedAtTime();
         public delegate void OnPlayerSelectWrong();
         #endregion
 
         #region Events
-        public static event OnGameStarted onGameStarted;
+        public static OnGameStarted onGameStarted;
+        public static OnNextQuestionLoaded onNextQuestionLoaded;
 
-        public static event OnPlayerSelectCorrect correctAnswer;
-        public static event OnPlayerNotSelectedAtTime notSelectedAtTime;
-        public static event OnPlayerSelectWrong  wrongAnswer;
+        public static OnPlayerSelectedAnswer onPlayerSelectedAnswer;
+        public static OnPlayerSelectCorrect correctAnswer;
+        public static OnPlayerNotSelectedAtTime notSelectedAtTime;
+        public static OnPlayerSelectWrong  wrongAnswer;
         #endregion
     }
 }

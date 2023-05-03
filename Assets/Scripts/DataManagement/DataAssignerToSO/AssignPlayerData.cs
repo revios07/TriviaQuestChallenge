@@ -20,5 +20,10 @@ namespace Trivia.Data
             players = GetText<jsonDataPlayers>(jsonText);
             Debug.Log(players.data[0].nickname);
         }
+
+        public jsonDataPlayers GetPlayers()
+        {
+            return players;
+        }
     }
 }

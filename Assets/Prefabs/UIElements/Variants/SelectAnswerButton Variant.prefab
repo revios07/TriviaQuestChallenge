@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850371, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_Name
-      value: SelectAnswerVariant
+      value: Button Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850380, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_Pivot.x
@@ -113,3 +113,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
+--- !u!1 &1209108701439039581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2262251925066850371, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
+  m_PrefabInstance: {fileID: 1126673786500167710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5533138869089905235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209108701439039581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53a57e2d63f25049b8aacfc515ab0dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

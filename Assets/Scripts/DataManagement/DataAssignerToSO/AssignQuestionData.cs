@@ -20,5 +20,10 @@ namespace Trivia.Data
             questions = GetText<jsonDataQuestions>(jsonText);
             Debug.Log(questions.questions[0].question);
         }
+
+        public jsonDataQuestions GetQuestions()
+        {
+            return questions;
+        }
     }
 }
