@@ -13,6 +13,11 @@ namespace Trivia.DataManagement
             StartCoroutine(NameWrite());
         }
 
+        public jsonDataQuestions[] GetQuestions()
+        {
+            return questions;
+        }
+
         private IEnumerator NameWrite()
         {
             for (int i = 0; i < questions.Length; ++i)
@@ -23,11 +28,6 @@ namespace Trivia.DataManagement
 
                 yield return new WaitForSeconds(0.1f);
             }
-        }
-
-        public jsonDataQuestions[] GetQuestions()
-        {
-            return questions;
         }
     }
 }

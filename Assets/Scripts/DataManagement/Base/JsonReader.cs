@@ -9,7 +9,7 @@ namespace Trivia.DataManagement
     public abstract class JsonReader : MonoBehaviour
     {
         [SerializeField]
-        protected string[] jsonURLs;
+        protected string[] jsonUrls;
         protected string[] jsonTexts;
 
         protected IEnumerator[] loadWebRequest;
@@ -29,18 +29,17 @@ namespace Trivia.DataManagement
 
         protected IEnumerator LoadData<T>() where T : class
         {
-            for (int i = 0; i < jsonURLs.Length; ++i)
+            for (int i = 0; i < jsonUrls.Length; ++i)
             {
-                var webRequest = new WWW(jsonURLs[i]);
+                var webRequest = new WWW(jsonUrls[i]);
 
                 yield return webRequest;
-
-                Debug.Log("Loaded!");
 
                 if (webRequest.error == null)
                 {
                     jsonTexts[i] = webRequest.text;
 
+                    Debug.Log("Loaded!" + typeof(T) + "" + i + "");
                     Debug.Log(jsonTexts[i]);
 
                     isLoaded[i] = true;

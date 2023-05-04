@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Trivia.Interfaces;
-using UnityEngine.SceneManagement;
 using Trivia.Management;
 
 namespace Trivia.UI

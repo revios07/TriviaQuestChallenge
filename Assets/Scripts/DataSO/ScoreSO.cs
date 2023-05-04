@@ -17,9 +17,10 @@ namespace Trivia.Data
             wrong = _wrongAnswer;
             doesntReply = _doesntReplyInTime;
         }
-
         public void SetHighScore(int highScore)
         {
+            //this.highScore = highScore > this.highScore ? highScore : this.highScore;
+
             if(highScore > this.highScore)
             {
                 this.highScore = highScore;

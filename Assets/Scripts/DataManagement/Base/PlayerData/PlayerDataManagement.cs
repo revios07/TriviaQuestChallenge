@@ -13,11 +13,11 @@ namespace Trivia.DataManagement
         {
             base.Start();
 
-            players = new jsonDataPlayers[jsonURLs.Length];
+            players = new jsonDataPlayers[jsonUrls.Length];
 
-            loadWebRequest = new IEnumerator[jsonURLs.Length];
-            jsonTexts = new string[jsonURLs.Length];
-            isLoaded = new bool[jsonURLs.Length];
+            loadWebRequest = new IEnumerator[jsonUrls.Length];
+            jsonTexts = new string[jsonUrls.Length];
+            isLoaded = new bool[jsonUrls.Length];
 
             for (int i = 0; i < players.Length; ++i)
             {

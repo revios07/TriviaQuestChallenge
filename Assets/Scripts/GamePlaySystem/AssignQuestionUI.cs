@@ -42,7 +42,7 @@ namespace Trivia.GamePlay
                 _questionIndex = 0;
             }
 
-            Question question = _assignQuestionData.GetQuestions()[0].questions[_questionIndex];
+            var question = _assignQuestionData.GetQuestions()[0].questions[_questionIndex];
             _questionText.text = question.question;
 
             for (var i = 0; i < question.choices.Length; ++i)

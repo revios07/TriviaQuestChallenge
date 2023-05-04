@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77441228dc80834a956c4d0eddd0529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonURL: https://magegamessite.web.app/case1/questions.json
+  jsonUrls:
+  - https://magegamessite.web.app/case1/questions.json

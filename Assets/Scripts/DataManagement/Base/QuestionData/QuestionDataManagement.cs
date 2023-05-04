@@ -19,7 +19,7 @@ namespace Trivia.DataManagement
             }
 
             loadWebRequest = new IEnumerator[questions.Length];
-            jsonURLs = new string[loadWebRequest.Length];
+            jsonUrls = new string[loadWebRequest.Length];
             jsonTexts = new string[loadWebRequest.Length];
             isLoaded = new bool[loadWebRequest.Length];
 

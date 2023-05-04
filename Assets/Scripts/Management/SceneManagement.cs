@@ -8,7 +8,6 @@ namespace Trivia.Management
     public class SceneManagement : MonoBehaviour
     {
         private static SceneManagement instance;
-
         public static SceneManagement Instance
         {
             get
@@ -28,6 +27,7 @@ namespace Trivia.Management
                 instance = value;
             }
         }
+
         public int targetLoadLevel { get; private set; } = 1; //Load Default Level First => MainMenu for this
 
 
@@ -45,6 +45,7 @@ namespace Trivia.Management
 
         public void LoadLevel(int targetLevel)
         {
+            //Level Loader Scene Load
             SceneManager.LoadScene(0);
             targetLoadLevel = targetLevel;
         }

@@ -7,10 +7,21 @@ namespace Trivia.DataManagement
 {
     public class AssignPlayerData : PlayerDataManagement
     {
+        private int currentPage = 0;
+
         protected override void Start()
         {
             base.Start();
             StartCoroutine(NameWrite());
+        }
+
+        public jsonDataPlayers[] GetPlayers()
+        {
+            return players;
+        }
+        public int GetPage()
+        {
+            return currentPage++;
         }
 
         private IEnumerator NameWrite()
@@ -23,11 +34,6 @@ namespace Trivia.DataManagement
 
                 yield return new WaitForSeconds(0.5f);
             }
-        }
-
-        public jsonDataPlayers[] GetPlayers()
-        {
-            return players;
         }
     }
 }
