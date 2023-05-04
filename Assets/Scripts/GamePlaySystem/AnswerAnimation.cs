@@ -8,11 +8,11 @@ namespace Trivia.GamePlay
 {
     public class AnswerAnimation : MonoBehaviour
     {
+        private bool _isCorrectAnswer;
+
         private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
         private Button _answerButton;
         private Image _buttonVisual;
-
-        private bool _isCorrectAnswer;
 
         #region
         private void OnEnable()
@@ -79,10 +79,24 @@ namespace Trivia.GamePlay
 
             _buttonVisual.color = Color.green;
 
-            yield return new WaitForSeconds(3f);
+            var animTimer = 3.0f;
+            var isScaleToUpper = true;
+            var animationStartScale = transform.localScale;
 
-            _buttonVisual.color = Color.white;
-            _answerButton.interactable = true;
+            //Button Move Animation
+            while(animTimer > 0.0f)
+            {
+                yield return _waitForFixedUpdate;
+
+                animTimer -= Time.fixedDeltaTime;
+
+                ButtonAnimationEffect(ref isScaleToUpper, ref animTimer, _isCorrectAnswer);
+            }
+
+            yield return _waitForFixedUpdate;
+
+            //Load Defaults
+            LoadDefaultButtonProperties(animationStartScale);
         }
         private IEnumerator AnimationWrongChoise()
         {
@@ -90,12 +104,26 @@ namespace Trivia.GamePlay
 
             yield return new WaitForFixedUpdate();
 
-            GetComponent<Image>().color = Color.red;
+            _buttonVisual.color = Color.red;
+
+            var animTimer = 3.0f;
+            var isScaleToUpper = true;
+            var animationStartScale = transform.localScale;
+
+            //Button Move Animation
+            while (animTimer > 0.0f)
+            {
+                yield return _waitForFixedUpdate;
+
+                animTimer -= Time.fixedDeltaTime;
+
+                ButtonAnimationEffect(ref isScaleToUpper, ref animTimer, _isCorrectAnswer);
+            }
 
             yield return new WaitForSeconds(3f);
 
-            GetComponent<Image>().color = Color.white;
-            _answerButton.interactable = true;
+            //Load Defaults
+            LoadDefaultButtonProperties(animationStartScale);
         }
         #endregion
 
@@ -113,6 +141,36 @@ namespace Trivia.GamePlay
                 EventsSystem.notSelectedAtTime += PlayWrongAnimation;
                 EventsSystem.onPlayerSelectedAnswer += PlayWrongAnimation;
             }
+        }
+
+        [Tooltip("Use With IEnumerator")]
+        private void ButtonAnimationEffect(ref bool isScaleToUpper, ref float animTimer, bool isCorrectAnswer)
+        {
+            if (isScaleToUpper)
+            {
+                transform.localScale += Vector3.one * 10f * Time.fixedDeltaTime;
+
+                if (animTimer <= 1.5f && isCorrectAnswer)
+                {
+                    isScaleToUpper = false;
+                }
+            }
+            else if (!isScaleToUpper)
+            {
+                transform.localScale -= Vector3.one * 10f * Time.fixedDeltaTime;
+
+                if(animTimer <= 1.5f && !isCorrectAnswer)
+                {
+                    isScaleToUpper = true;
+                }
+            }
+        }
+
+        private void LoadDefaultButtonProperties(Vector3 animationStartScale)
+        {
+            transform.localScale = animationStartScale;
+            _buttonVisual.color = Color.white;
+            _answerButton.interactable = true;
         }
 
         private void CheckCalls()

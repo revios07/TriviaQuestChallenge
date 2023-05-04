@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Trivia.DataManagement;
 using UnityEngine;
+using Trivia.DataManagement;
 
 namespace Trivia.UI
 {

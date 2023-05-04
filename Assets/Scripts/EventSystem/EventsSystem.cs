@@ -7,12 +7,12 @@ namespace Trivia.Management
     public class EventsSystem : MonoBehaviour
     {
         #region Delegates
-        //Game Base Calls
+        //Game Base Delegates
         public delegate void OnGameStarted();
         public delegate void OnNextQuestionLoaded();
         public delegate void OnAllQuestionsComplete();
 
-        //Player Conditions
+        //Player Condition Delegates
         public delegate void OnPlayerSelectedAnswer();
         public delegate void OnPlayerSelectCorrect();
         public delegate void OnPlayerNotSelectedAtTime();
@@ -20,14 +20,16 @@ namespace Trivia.Management
         #endregion
 
         #region Events
-        public static OnGameStarted onGameStarted;
-        public static OnNextQuestionLoaded onNextQuestionLoaded;
-        public static OnAllQuestionsComplete onAllQuestionsComplete;
+        //Game Base Events
+        public static OnGameStarted onGameStarted { get; set; }
+        public static OnNextQuestionLoaded onNextQuestionLoaded { get; set; }
+        public static OnAllQuestionsComplete onAllQuestionsComplete { get; set; }
 
-        public static OnPlayerSelectedAnswer onPlayerSelectedAnswer;
-        public static OnPlayerSelectCorrect correctAnswer;
-        public static OnPlayerNotSelectedAtTime notSelectedAtTime;
-        public static OnPlayerSelectWrong wrongAnswer;
+        //Player Condition Events
+        public static OnPlayerSelectedAnswer onPlayerSelectedAnswer { get; set; }
+        public static OnPlayerSelectCorrect correctAnswer { get; set; }
+        public static OnPlayerNotSelectedAtTime notSelectedAtTime { get; set; }
+        public static OnPlayerSelectWrong wrongAnswer { get; set; }
         #endregion
     }
 }
