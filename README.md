@@ -5,8 +5,8 @@ Unity Version: 2021.3.24f1
 Classic Trivia Game with Read jsonData from web or in project
 
 Abstract:
-Used webpages for "LeaderBoard" list players,
-Used in game asset for read and update Questions data.
+Used webpages for "LeaderBoard List Players" data,
+Used in game asset for read and update "Questions" data.
 
 GamePlay:
 Core => 
