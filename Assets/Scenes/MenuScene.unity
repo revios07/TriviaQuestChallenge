@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7dc400972d1c614aa4783ddf8ed9c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonURLs: []
 --- !u!1001 &153087721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -665,6 +666,63 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2975455058695405718, guid: bfacd7557bd7fce41b96231b99e946c9, type: 3}
   m_PrefabInstance: {fileID: 2975455057795028846}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1131599894
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016385, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123412327347016387, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
+      propertyPath: m_Name
+      value: PlayerDataAssigner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c78e33bc6f75bc46ad569864c0831b9, type: 3}
 --- !u!114 &1350504416 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6495294393498674192, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
@@ -823,6 +881,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77441228dc80834a956c4d0eddd0529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonURLs:
+  - https://magegamessite.web.app/case1/questions.json
 --- !u!1 &1941766559
 GameObject:
   m_ObjectHideFlags: 0

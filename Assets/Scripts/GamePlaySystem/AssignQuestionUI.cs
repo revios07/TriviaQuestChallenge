@@ -35,14 +35,14 @@ namespace Trivia.GamePlay
 
         private void AssignQuestion()
         {
-            if (_questionIndex >= _assignQuestionData.GetQuestions().questions.Count)
+            if (_questionIndex >= _assignQuestionData.GetQuestions()[0].questions.Count)
             {
                 Debug.Log("Question Reached Out!");
                 Debug.LogError("Turn To First Question!");
                 _questionIndex = 0;
             }
 
-            Question question = _assignQuestionData.GetQuestions().questions[_questionIndex];
+            Question question = _assignQuestionData.GetQuestions()[0].questions[_questionIndex];
             _questionText.text = question.question;
 
             for (var i = 0; i < question.choices.Length; ++i)

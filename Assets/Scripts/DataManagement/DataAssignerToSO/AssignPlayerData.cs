@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Trivia.DataManagement;
+using Trivia.Data;
 
-namespace Trivia.Data
+namespace Trivia.DataManagement
 {
     public class AssignPlayerData : PlayerDataManagement
     {
@@ -15,12 +15,17 @@ namespace Trivia.Data
 
         private IEnumerator NameWrite()
         {
-            yield return new WaitUntil(() => isLoaded);
+            for(int i = 0; i < players.Length; ++i)
+            {
+                yield return new WaitUntil(() => isLoaded[i]);
 
-            players = GetText<jsonDataPlayers>(jsonText);
+                players[i] = GetText<jsonDataPlayers>(jsonTexts[i]);
+
+                yield return new WaitForSeconds(0.5f);
+            }
         }
 
-        public jsonDataPlayers GetPlayers()
+        public jsonDataPlayers[] GetPlayers()
         {
             return players;
         }
