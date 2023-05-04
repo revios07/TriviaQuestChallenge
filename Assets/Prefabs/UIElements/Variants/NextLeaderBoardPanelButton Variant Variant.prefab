@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2072120974575673481
+--- !u!1001 &5268538786255567608
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,15 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2262251924045956116, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_text
-      value: LEADER BOARD
+      value: Page Change
       objectReference: {fileID: 0}
     - target: {fileID: 2262251924045956116, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_fontSize
-      value: 20.45
+      value: 26.1
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850371, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_Name
-      value: LeaderBoardButton Variant
+      value: NextLeaderBoardPanelButton Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850380, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_Pivot.x
@@ -73,15 +73,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850380, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850380, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850380, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850380, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -114,18 +114,18 @@ PrefabInstance:
     - target: {fileID: 2262251925066850381, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8809001178840895303}
     - target: {fileID: 2262251925066850381, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850381, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LeaderBoardCheck
+      value: ChangePage
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850381, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Trivia.UI.LeaderBoardController, Assembly-CSharp
+      value: Trivia.UI.PageChanger, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2262251925066850381, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -133,20 +133,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
---- !u!1 &262481119217549514 stripped
+--- !u!1 &6230939264040622779 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2262251925066850371, guid: 13b3f8a16f01d3a418026a5d716cdaa4, type: 3}
-  m_PrefabInstance: {fileID: 2072120974575673481}
+  m_PrefabInstance: {fileID: 5268538786255567608}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1890032124126392568
+--- !u!114 &8809001178840895303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262481119217549514}
+  m_GameObject: {fileID: 6230939264040622779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adebaad41e2d82549a350f29d09fe716, type: 3}
+  m_Script: {fileID: 11500000, guid: dc23ce4eca145a94cb7b4562bc1144ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -22,7 +22,14 @@ namespace Trivia.GamePlay
 
         private void Awake()
         {
-            _assignQuestionData = FindObjectOfType<AssignQuestionData>();
+            try
+            {
+                _assignQuestionData = FindObjectOfType<AssignQuestionData>();
+            }
+            catch
+            {
+                Debug.Log("Not Find Question Assigner!");
+            }
             _selectableButtons = GetComponentsInChildren<Button>();
 
             var counter = 0;
@@ -55,13 +62,13 @@ namespace Trivia.GamePlay
                     //Correct Answer
                     _correctAnswerButton = _selectableButtons[i];
                     _correctAnswerButton.GetComponent<AnswerAnimation>().IsCorrectAnswerButton(true);
-                    _correctAnswerButton.onClick.AddListener(() => EventsSystem.correctAnswer.Invoke());
+                    _correctAnswerButton.onClick.AddListener(() => EventsSystem.correctAnswer?.Invoke());
                 }
                 else
                 {
                     //Wrong Answers
                     _correctAnswerButton.GetComponent<AnswerAnimation>().IsCorrectAnswerButton(false);
-                    _selectableButtons[i].onClick.AddListener(() => EventsSystem.wrongAnswer.Invoke());
+                    _selectableButtons[i].onClick.AddListener(() => EventsSystem.wrongAnswer?.Invoke());
                 }
             }
         }

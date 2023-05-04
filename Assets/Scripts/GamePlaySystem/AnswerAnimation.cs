@@ -18,10 +18,12 @@ namespace Trivia.GamePlay
         {
             if (_isCorrectAnswer)
             {
+                EventsSystem.notSelectedAtTime -= PlayCorrectAnimation;
                 EventsSystem.onPlayerSelectedAnswer -= PlayCorrectAnimation;
             }
             else if (!_isCorrectAnswer)
             {
+                EventsSystem.notSelectedAtTime -= PlayWrongAnimation;
                 EventsSystem.onPlayerSelectedAnswer -= PlayWrongAnimation;
             }
         }
@@ -63,10 +65,12 @@ namespace Trivia.GamePlay
 
             if (_isCorrectAnswer)
             {
+                EventsSystem.notSelectedAtTime += PlayCorrectAnimation;
                 EventsSystem.onPlayerSelectedAnswer += PlayCorrectAnimation;
             }
             else if (!_isCorrectAnswer)
             {
+                EventsSystem.notSelectedAtTime += PlayWrongAnimation;
                 EventsSystem.onPlayerSelectedAnswer += PlayWrongAnimation;
             }
         }

@@ -13,7 +13,7 @@ namespace Trivia.DataManagement
         protected string[] jsonTexts;
 
         protected IEnumerator[] loadWebRequest;
-        protected bool[] isLoaded;
+        public bool[] isLoaded { get; protected set; }
 
         protected virtual void Start()
         {
