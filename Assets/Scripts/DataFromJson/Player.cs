@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Trivia.Data
 {
     [Serializable]
-    public class jsonDataPlayers
+    public class JsonDataPlayers
     {
         public int page;
         public bool is_last;

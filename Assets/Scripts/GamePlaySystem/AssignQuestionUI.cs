@@ -19,18 +19,18 @@ namespace Trivia.GamePlay
         private TMP_Text _questionText;
         private Button[] _selectableButtons;
         private Button _correctAnswerButton;
-        private List<TMP_Text> _choicesTextes = new List<TMP_Text>();
+        private List<TMP_Text> _choicesTextes = new();
 
         #region Unity Calls
         private void OnEnable()
         {
-            EventsSystem.onNextQuestionLoaded += AssignQuestion;
-            EventsSystem.onPlayerSelectedAnswer += LoadNextQuestion;
+            EventsSystem.OnNextQuestionLoaded += AssignQuestion;
+            EventsSystem.OnPlayerSelectedAnswer += LoadNextQuestion;
         }
         private void OnDisable()
         {
-            EventsSystem.onNextQuestionLoaded -= AssignQuestion;
-            EventsSystem.onPlayerSelectedAnswer -= LoadNextQuestion;
+            EventsSystem.OnNextQuestionLoaded -= AssignQuestion;
+            EventsSystem.OnPlayerSelectedAnswer -= LoadNextQuestion;
         }
         private void Awake()
         {
@@ -49,7 +49,7 @@ namespace Trivia.GamePlay
         }
         private void Start()
         {
-            AssignQuestion();
+            LoadNextQuestion();
         }
         #endregion 
 
@@ -68,11 +68,9 @@ namespace Trivia.GamePlay
                 Debug.LogError("Turn To First Question!");
                 _questionIndex = 0;
                 _isAllQuestionsComplete = true;
-                EventsSystem.onAllQuestionsComplete?.Invoke();
+                EventsSystem.OnAllQuestionsComplete?.Invoke();
                 return;
             }
-
-            Debug.Log(_assignQuestionData.GetQuestions()[0].questions[_questionIndex].answer);
 
             foreach (var transform in _selectableButtons)
             {
@@ -80,6 +78,7 @@ namespace Trivia.GamePlay
             }
 
             var question = _assignQuestionData.GetQuestions()[0].questions[_questionIndex];
+            Debug.Log("Answer : " + _assignQuestionData.GetQuestions()[0].questions[_questionIndex].answer);
 
             _questionText.text = question.question;
 
@@ -100,8 +99,6 @@ namespace Trivia.GamePlay
                     _selectableButtons[i].GetComponent<AnswerAnimation>().IsCorrectAnswerButton(false);
                 }
             }
-
-            EventsSystem.onNextQuestionLoaded?.Invoke();
 
             //Next Question
             ++_questionIndex;

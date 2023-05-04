@@ -9,7 +9,7 @@ namespace Trivia.Data
     {
         [SerializeField]
         private int _correctAnswer, _wrongAnswer, _doesntReplyInTime;
-        public int highScore { get; private set; }
+        public int HighScore { get; private set; }
 
         public void GetScores(out int correct, out int wrong, out int doesntReply)
         {
@@ -21,9 +21,9 @@ namespace Trivia.Data
         {
             //this.highScore = highScore > this.highScore ? highScore : this.highScore;
 
-            if(highScore > this.highScore)
+            if(highScore > this.HighScore)
             {
-                this.highScore = highScore;
+                this.HighScore = highScore;
                 Debug.Log("HIGH SCORE!");
             }
         }

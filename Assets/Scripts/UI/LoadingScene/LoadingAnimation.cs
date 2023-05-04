@@ -17,11 +17,11 @@ namespace Trivia.UI
 
         private Slider _loadingSlider;
         private TMP_Text _loadingText;
-        private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
+        private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
 
         [SerializeField]
         private float _animationTimerLoading = 1f;
-        private string[] _loadingTexts = new string[] { "Loading.", "Loading..", "Loading..." };
+        private readonly string[] _loadingTexts = new string[] { "Loading.", "Loading..", "Loading..." };
 
         #region Unity CallBacks
         private void Awake()
@@ -32,7 +32,7 @@ namespace Trivia.UI
 
         private void Start()
         {
-            targetLevel = SceneManagement.Instance.targetLoadLevel;
+            targetLevel = SceneManagement.Instance.TargetLoadLevel;
 
             if (targetLevel != SceneManager.GetActiveScene().buildIndex)
                 StartAnimation();

@@ -21,15 +21,15 @@ namespace Trivia.GamePlay
         {
             _scoreSO.GetScores(out _correctAnswerScore, out _wrongAnswerScore, out _notAnswered);
 
-            EventsSystem.correctAnswer += CorrectAnswer;
-            EventsSystem.wrongAnswer += WrongAnswer;
-            EventsSystem.notSelectedAtTime += NotSelected;
+            EventsSystem.CorrectAnswer += CorrectAnswer;
+            EventsSystem.WrongAnswer += WrongAnswer;
+            EventsSystem.NotSelectedAtTime += NotSelected;
         }
         private void OnDisable()
         {
-            EventsSystem.correctAnswer -= CorrectAnswer;
-            EventsSystem.wrongAnswer -= WrongAnswer;
-            EventsSystem.notSelectedAtTime -= NotSelected;
+            EventsSystem.CorrectAnswer -= CorrectAnswer;
+            EventsSystem.WrongAnswer -= WrongAnswer;
+            EventsSystem.NotSelectedAtTime -= NotSelected;
         }
         private void Start()
         {

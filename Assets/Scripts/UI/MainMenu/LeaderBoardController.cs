@@ -20,12 +20,11 @@ namespace Trivia.UI
         private float _leaderBoardMoveSpeed;
 
         private RectTransform _rectTransform => this.gameObject.transform as RectTransform;
-        private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
+        private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
         private IEnumerator _changeRectTransformSize;
 
         private AssignPlayerData _playerDataAssigner;
         private List<PlayerPanelAssigner> _playerPanelAssigners;
-        private Transform[] _numberOfPages;
         private GameObject _changePageButtonGO;
 
         #region Unity Calls
@@ -121,7 +120,7 @@ namespace Trivia.UI
             int page = _playerDataAssigner.GetPage();
 
             //Wait For Load Datas From URL
-            yield return new WaitUntil(() => _playerDataAssigner.isLoaded[page]);
+            yield return new WaitUntil(() => _playerDataAssigner.IsLoaded[page]);
             yield return new WaitForSeconds(0.1f);
 
             if (_playerDataAssigner.GetPlayers().Length > transform.parent.childCount - 2)
@@ -149,7 +148,7 @@ namespace Trivia.UI
             }
         }
 
-        private void WriteDataToText(PlayerPanelAssigner playerPanelAssigner, jsonDataPlayers jsonDataPlayers, int index)
+        private void WriteDataToText(PlayerPanelAssigner playerPanelAssigner, JsonDataPlayers jsonDataPlayers, int index)
         {
             var rank = jsonDataPlayers.data[index].rank;
             var nickName = jsonDataPlayers.data[index].nickname;

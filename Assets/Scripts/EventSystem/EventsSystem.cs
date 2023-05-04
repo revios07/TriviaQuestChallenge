@@ -8,28 +8,28 @@ namespace Trivia.Management
     {
         #region Delegates
         //Game Base Delegates
-        public delegate void OnGameStarted();
-        public delegate void OnNextQuestionLoaded();
-        public delegate void OnAllQuestionsComplete();
+        public delegate void DL_OnGameStarted();
+        public delegate void DL_OnNextQuestionLoaded();
+        public delegate void DL_OnAllQuestionsComplete();
 
         //Player Condition Delegates
-        public delegate void OnPlayerSelectedAnswer();
-        public delegate void OnPlayerSelectCorrect();
-        public delegate void OnPlayerNotSelectedAtTime();
-        public delegate void OnPlayerSelectWrong();
+        public delegate void DL_OnPlayerSelectedAnswer();
+        public delegate void DL_OnPlayerSelectCorrect();
+        public delegate void DL_OnPlayerNotSelectedAtTime();
+        public delegate void DL_OnPlayerSelectWrong();
         #endregion
 
         #region Events
         //Game Base Events
-        public static OnGameStarted onGameStarted { get; set; }
-        public static OnNextQuestionLoaded onNextQuestionLoaded { get; set; }
-        public static OnAllQuestionsComplete onAllQuestionsComplete { get; set; }
+        public static DL_OnGameStarted OnGameStarted { get; set; }
+        public static DL_OnNextQuestionLoaded OnNextQuestionLoaded { get; set; }
+        public static DL_OnAllQuestionsComplete OnAllQuestionsComplete { get; set; }
 
         //Player Condition Events
-        public static OnPlayerSelectedAnswer onPlayerSelectedAnswer { get; set; }
-        public static OnPlayerSelectCorrect correctAnswer { get; set; }
-        public static OnPlayerNotSelectedAtTime notSelectedAtTime { get; set; }
-        public static OnPlayerSelectWrong wrongAnswer { get; set; }
+        public static DL_OnPlayerSelectedAnswer OnPlayerSelectedAnswer { get; set; }
+        public static DL_OnPlayerSelectCorrect CorrectAnswer { get; set; }
+        public static DL_OnPlayerNotSelectedAtTime NotSelectedAtTime { get; set; }
+        public static DL_OnPlayerSelectWrong WrongAnswer { get; set; }
         #endregion
     }
 }

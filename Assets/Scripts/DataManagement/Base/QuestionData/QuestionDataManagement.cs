@@ -7,27 +7,27 @@ namespace Trivia.DataManagement
 {
     public class QuestionDataManagement : JsonReader
     {
-        protected jsonDataQuestions[] questions;
+        protected JsonDataQuestions[] questions;
 
         protected override void Start()
         {
             base.Start();
 
-            questions = new jsonDataQuestions[1];
+            questions = new JsonDataQuestions[1];
 
             loadWebRequest = new IEnumerator[questions.Length];
             jsonTexts = new string[loadWebRequest.Length];
-            isLoaded = new bool[loadWebRequest.Length];
+            IsLoaded = new bool[loadWebRequest.Length];
 
             if (jsonFile != null)
             {
-                questions[0] = GetText<jsonDataQuestions>(jsonFile.text);
+                questions[0] = GetText<JsonDataQuestions>(jsonFile.text);
                 return;
             }
 
             for (int i = 0; i < questions.Length; ++i)
             {
-                loadWebRequest[i] = LoadData<jsonDataPlayers>();
+                loadWebRequest[i] = LoadData<JsonDataPlayers>();
                 StartCoroutine(loadWebRequest[i]);
             }
         }

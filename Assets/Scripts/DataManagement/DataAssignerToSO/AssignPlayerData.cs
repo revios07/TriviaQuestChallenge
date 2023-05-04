@@ -15,7 +15,7 @@ namespace Trivia.DataManagement
             StartCoroutine(NameWrite());
         }
 
-        public jsonDataPlayers[] GetPlayers()
+        public JsonDataPlayers[] GetPlayers()
         {
             return players;
         }
@@ -28,9 +28,9 @@ namespace Trivia.DataManagement
         {
             for(int i = 0; i < players.Length; ++i)
             {
-                yield return new WaitUntil(() => isLoaded[i]);
+                yield return new WaitUntil(() => IsLoaded[i]);
 
-                players[i] = GetText<jsonDataPlayers>(jsonTexts[i]);
+                players[i] = GetText<JsonDataPlayers>(jsonTexts[i]);
 
                 yield return new WaitForSeconds(0.5f);
             }

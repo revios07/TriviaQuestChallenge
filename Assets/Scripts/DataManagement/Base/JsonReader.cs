@@ -16,7 +16,7 @@ namespace Trivia.DataManagement
         protected string[] jsonTexts;
 
         protected IEnumerator[] loadWebRequest;
-        public bool[] isLoaded { get; protected set; }
+        public bool[] IsLoaded { get; protected set; }
 
         protected virtual void Start()
         {
@@ -45,7 +45,7 @@ namespace Trivia.DataManagement
                     Debug.Log("Loaded!" + typeof(T) + "" + i + "");
                     Debug.Log(jsonTexts[i]);
 
-                    isLoaded[i] = true;
+                    IsLoaded[i] = true;
                 }
                 else
                 {

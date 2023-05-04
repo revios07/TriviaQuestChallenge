@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Trivia.Data
 {
     [Serializable]
-    public class jsonDataQuestions
+    public class JsonDataQuestions
     {
         public List<Question> questions;
     }

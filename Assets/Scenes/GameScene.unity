@@ -1135,6 +1135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Question
       objectReference: {fileID: 0}
+    - target: {fileID: 7770800331296461454, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7770800331296461455, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

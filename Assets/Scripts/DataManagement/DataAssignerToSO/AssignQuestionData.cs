@@ -13,7 +13,7 @@ namespace Trivia.DataManagement
             StartCoroutine(NameWrite());
         }
 
-        public jsonDataQuestions[] GetQuestions()
+        public JsonDataQuestions[] GetQuestions()
         {
             return questions;
         }
@@ -22,11 +22,11 @@ namespace Trivia.DataManagement
         {
             for (int i = 0; i < questions.Length; ++i)
             {
-                yield return new WaitUntil(() => isLoaded[i]);
+                yield return new WaitUntil(() => IsLoaded[i]);
 
                 if(jsonFile != null)
                 {
-                    questions[i] = GetText<jsonDataQuestions>(jsonFile.text);
+                    questions[i] = GetText<JsonDataQuestions>(jsonFile.text);
 
                     Debug.Log(questions[i]);
 
@@ -34,7 +34,7 @@ namespace Trivia.DataManagement
                     continue;
                 }
 
-                questions[i] = GetText<jsonDataQuestions>(jsonTexts[i]);
+                questions[i] = GetText<JsonDataQuestions>(jsonTexts[i]);
 
                 yield return new WaitForSeconds(0.1f);
             }

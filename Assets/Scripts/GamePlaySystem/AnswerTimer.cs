@@ -19,13 +19,13 @@ namespace Trivia.GamePlay
         #region Unity Calls
         private void OnEnable()
         {
-            EventsSystem.onNextQuestionLoaded += LoadDefaultTime;
-            EventsSystem.onAllQuestionsComplete += GameEnded;
+            EventsSystem.OnNextQuestionLoaded += LoadDefaultTime;
+            EventsSystem.OnAllQuestionsComplete += GameEnded;
         }
         private void OnDisable()
         {
-            EventsSystem.onNextQuestionLoaded -= LoadDefaultTime;
-            EventsSystem.onAllQuestionsComplete -= GameEnded;
+            EventsSystem.OnNextQuestionLoaded -= LoadDefaultTime;
+            EventsSystem.OnAllQuestionsComplete -= GameEnded;
         }
         private void Awake()
         {
@@ -48,7 +48,7 @@ namespace Trivia.GamePlay
 
                 _timerText.text = _timeForQuestion.ToString();
 
-                EventsSystem.notSelectedAtTime?.Invoke();
+                EventsSystem.NotSelectedAtTime?.Invoke();
             }
             else if (_timeForQuestion >= 0f)
             {

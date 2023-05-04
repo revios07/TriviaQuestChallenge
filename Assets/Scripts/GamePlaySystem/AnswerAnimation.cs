@@ -10,7 +10,7 @@ namespace Trivia.GamePlay
     {
         private bool _isCorrectAnswer;
 
-        private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
+        private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
         private Button _answerButton;
         private Image _buttonVisual;
 
@@ -23,13 +23,13 @@ namespace Trivia.GamePlay
         {
             if (_isCorrectAnswer)
             {
-                EventsSystem.notSelectedAtTime -= PlayCorrectAnimation;
-                EventsSystem.onPlayerSelectedAnswer -= PlayCorrectAnimation;
+                EventsSystem.NotSelectedAtTime -= PlayCorrectAnimation;
+                EventsSystem.OnPlayerSelectedAnswer -= PlayCorrectAnimation;
             }
             else if (!_isCorrectAnswer)
             {
-                EventsSystem.notSelectedAtTime -= PlayWrongAnimation;
-                EventsSystem.onPlayerSelectedAnswer -= PlayWrongAnimation;
+                EventsSystem.NotSelectedAtTime -= PlayWrongAnimation;
+                EventsSystem.OnPlayerSelectedAnswer -= PlayWrongAnimation;
             }
 
             GetComponent<Button>().onClick.RemoveAllListeners();
@@ -39,23 +39,19 @@ namespace Trivia.GamePlay
             _answerButton = GetComponent<Button>();
             _buttonVisual = GetComponent<Image>();
         }
-        private void Start()
-        {
-
-        }
         #endregion
 
         public void SelectedAnswer()
         {
-            EventsSystem.onPlayerSelectedAnswer?.Invoke();
+            EventsSystem.OnPlayerSelectedAnswer?.Invoke();
 
             if (_isCorrectAnswer)
             {
-                EventsSystem.correctAnswer?.Invoke();
+                EventsSystem.CorrectAnswer?.Invoke();
             }
             else if (!_isCorrectAnswer)
             {
-                EventsSystem.wrongAnswer?.Invoke();
+                EventsSystem.WrongAnswer?.Invoke();
             }
         }
 
@@ -133,13 +129,13 @@ namespace Trivia.GamePlay
 
             if (_isCorrectAnswer)
             {
-                EventsSystem.notSelectedAtTime += PlayCorrectAnimation;
-                EventsSystem.onPlayerSelectedAnswer += PlayCorrectAnimation;
+                EventsSystem.NotSelectedAtTime += PlayCorrectAnimation;
+                EventsSystem.OnPlayerSelectedAnswer += PlayCorrectAnimation;
             }
             else if (!_isCorrectAnswer)
             {
-                EventsSystem.notSelectedAtTime += PlayWrongAnimation;
-                EventsSystem.onPlayerSelectedAnswer += PlayWrongAnimation;
+                EventsSystem.NotSelectedAtTime += PlayWrongAnimation;
+                EventsSystem.OnPlayerSelectedAnswer += PlayWrongAnimation;
             }
         }
 

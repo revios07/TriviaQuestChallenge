@@ -28,7 +28,7 @@ namespace Trivia.Management
             }
         }
 
-        public int targetLoadLevel { get; private set; } = 1; //Load Default Level First => MainMenu for this
+        public int TargetLoadLevel { get; private set; } = 1; //Load Default Level First => MainMenu for this
 
 
         private void Awake()
@@ -47,7 +47,7 @@ namespace Trivia.Management
         {
             //Level Loader Scene Load
             SceneManager.LoadScene(0);
-            targetLoadLevel = targetLevel;
+            TargetLoadLevel = targetLevel;
         }
     }
 }

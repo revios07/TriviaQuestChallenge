@@ -8,7 +8,6 @@ namespace Trivia.UI
     public class PageChanger : MonoBehaviour
     {
         private AssignPlayerData _assignPlayerData;
-        private bool _isPageChanged;
         private int _pageCounter = 0; //Load First Page
 
         #region Unity Calls
