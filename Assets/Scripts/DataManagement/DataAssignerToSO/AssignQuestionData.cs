@@ -24,6 +24,16 @@ namespace Trivia.DataManagement
             {
                 yield return new WaitUntil(() => isLoaded[i]);
 
+                if(jsonFile != null)
+                {
+                    questions[i] = GetText<jsonDataQuestions>(jsonFile.text);
+
+                    Debug.Log(questions[i]);
+
+                    yield return new WaitForSeconds(0.1f);
+                    continue;
+                }
+
                 questions[i] = GetText<jsonDataQuestions>(jsonTexts[i]);
 
                 yield return new WaitForSeconds(0.1f);

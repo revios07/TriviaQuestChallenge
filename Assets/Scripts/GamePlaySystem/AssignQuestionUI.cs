@@ -12,14 +12,26 @@ namespace Trivia.GamePlay
     public class AssignQuestionUI : MonoBehaviour
     {
         private int _questionIndex = 0;
+        private bool _isAllQuestionsComplete;
 
         private AssignQuestionData _assignQuestionData;
-        private TMP_Text _questionText;
 
+        private TMP_Text _questionText;
         private Button[] _selectableButtons;
         private Button _correctAnswerButton;
         private List<TMP_Text> _choicesTextes = new List<TMP_Text>();
 
+        #region Unity Calls
+        private void OnEnable()
+        {
+            EventsSystem.onNextQuestionLoaded += AssignQuestion;
+            EventsSystem.onPlayerSelectedAnswer += LoadNextQuestion;
+        }
+        private void OnDisable()
+        {
+            EventsSystem.onNextQuestionLoaded -= AssignQuestion;
+            EventsSystem.onPlayerSelectedAnswer -= LoadNextQuestion;
+        }
         private void Awake()
         {
             try
@@ -30,26 +42,45 @@ namespace Trivia.GamePlay
             {
                 Debug.Log("Not Find Question Assigner!");
             }
+
+            _questionText = GetComponentInChildren<TMP_Text>();
             _selectableButtons = GetComponentsInChildren<Button>();
 
-            var counter = 0;
-            foreach (var transform in _selectableButtons)
-            {
-                _choicesTextes.Add(transform.GetComponentInChildren<TMP_Text>());
-                _selectableButtons[counter++].onClick.RemoveAllListeners();
-            }
         }
+        private void Start()
+        {
+            AssignQuestion();
+        }
+        #endregion 
 
+        private void LoadNextQuestion()
+        {
+            Invoke(nameof(AssignQuestion), 3f);
+        }
         private void AssignQuestion()
         {
+            if (_isAllQuestionsComplete)
+                return;
+
             if (_questionIndex >= _assignQuestionData.GetQuestions()[0].questions.Count)
             {
                 Debug.Log("Question Reached Out!");
                 Debug.LogError("Turn To First Question!");
                 _questionIndex = 0;
+                _isAllQuestionsComplete = true;
+                EventsSystem.onAllQuestionsComplete?.Invoke();
+                return;
+            }
+
+            Debug.Log(_assignQuestionData.GetQuestions()[0].questions[_questionIndex].answer);
+
+            foreach (var transform in _selectableButtons)
+            {
+                _choicesTextes.Add(transform.GetComponentInChildren<TMP_Text>());
             }
 
             var question = _assignQuestionData.GetQuestions()[0].questions[_questionIndex];
+
             _questionText.text = question.question;
 
             for (var i = 0; i < question.choices.Length; ++i)
@@ -62,15 +93,18 @@ namespace Trivia.GamePlay
                     //Correct Answer
                     _correctAnswerButton = _selectableButtons[i];
                     _correctAnswerButton.GetComponent<AnswerAnimation>().IsCorrectAnswerButton(true);
-                    _correctAnswerButton.onClick.AddListener(() => EventsSystem.correctAnswer?.Invoke());
                 }
                 else
                 {
                     //Wrong Answers
-                    _correctAnswerButton.GetComponent<AnswerAnimation>().IsCorrectAnswerButton(false);
-                    _selectableButtons[i].onClick.AddListener(() => EventsSystem.wrongAnswer?.Invoke());
+                    _selectableButtons[i].GetComponent<AnswerAnimation>().IsCorrectAnswerButton(false);
                 }
             }
+
+            EventsSystem.onNextQuestionLoaded?.Invoke();
+
+            //Next Question
+            ++_questionIndex;
         }
     }
 }

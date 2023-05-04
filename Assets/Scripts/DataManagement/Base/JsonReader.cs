@@ -9,6 +9,9 @@ namespace Trivia.DataManagement
     public abstract class JsonReader : MonoBehaviour
     {
         [SerializeField]
+        protected TextAsset jsonFile;
+
+        [SerializeField]
         protected string[] jsonUrls;
         protected string[] jsonTexts;
 

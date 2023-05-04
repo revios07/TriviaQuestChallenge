@@ -12,6 +12,7 @@ namespace Trivia.GamePlay
         private TimeSO _timeData;
         private float _timeForQuestion;
         private bool _isTimeEnded;
+        private bool _isGameEnded;
 
         private TMPro.TMP_Text _timerText;
 
@@ -19,10 +20,12 @@ namespace Trivia.GamePlay
         private void OnEnable()
         {
             EventsSystem.onNextQuestionLoaded += LoadDefaultTime;
+            EventsSystem.onAllQuestionsComplete += GameEnded;
         }
         private void OnDisable()
         {
             EventsSystem.onNextQuestionLoaded -= LoadDefaultTime;
+            EventsSystem.onAllQuestionsComplete -= GameEnded;
         }
         private void Awake()
         {
@@ -34,7 +37,7 @@ namespace Trivia.GamePlay
         }
         private void Update()
         {
-            if (_isTimeEnded)
+            if (_isTimeEnded || _isGameEnded)
                 return;
 
             if (_timeForQuestion <= 0f)
@@ -64,6 +67,11 @@ namespace Trivia.GamePlay
             _timeForQuestion = _timeData.GetAnswerTime();
             _timerText.color = Color.white;
             _isTimeEnded = false;
+        }
+        private void GameEnded()
+        {
+            _isGameEnded = true;
+            _timerText.text = "END!";
         }
     }
 }

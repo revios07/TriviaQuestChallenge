@@ -10,6 +10,7 @@ namespace Trivia.Management
         //Game Base Calls
         public delegate void OnGameStarted();
         public delegate void OnNextQuestionLoaded();
+        public delegate void OnAllQuestionsComplete();
 
         //Player Conditions
         public delegate void OnPlayerSelectedAnswer();
@@ -21,11 +22,12 @@ namespace Trivia.Management
         #region Events
         public static OnGameStarted onGameStarted;
         public static OnNextQuestionLoaded onNextQuestionLoaded;
+        public static OnAllQuestionsComplete onAllQuestionsComplete;
 
         public static OnPlayerSelectedAnswer onPlayerSelectedAnswer;
         public static OnPlayerSelectCorrect correctAnswer;
         public static OnPlayerNotSelectedAtTime notSelectedAtTime;
-        public static OnPlayerSelectWrong  wrongAnswer;
+        public static OnPlayerSelectWrong wrongAnswer;
         #endregion
     }
 }

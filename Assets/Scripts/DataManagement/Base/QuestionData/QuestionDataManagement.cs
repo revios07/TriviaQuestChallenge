@@ -13,15 +13,17 @@ namespace Trivia.DataManagement
         {
             base.Start();
 
-            for (int i = 0; i < questions.Length; ++i)
-            {
-                questions[i] = new jsonDataQuestions();
-            }
+            questions = new jsonDataQuestions[1];
 
             loadWebRequest = new IEnumerator[questions.Length];
-            jsonUrls = new string[loadWebRequest.Length];
             jsonTexts = new string[loadWebRequest.Length];
             isLoaded = new bool[loadWebRequest.Length];
+
+            if (jsonFile != null)
+            {
+                questions[0] = GetText<jsonDataQuestions>(jsonFile.text);
+                return;
+            }
 
             for (int i = 0; i < questions.Length; ++i)
             {
