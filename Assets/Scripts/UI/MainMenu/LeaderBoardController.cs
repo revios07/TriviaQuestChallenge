@@ -26,12 +26,15 @@ namespace Trivia.UI
 
         private AssignPlayerData _playerDataAssigner;
         private List<PlayerPanelAssigner> _playerPanelAssigners;
-     
+
         #region Unity Calls
-        private void Start()
+        private void Awake()
         {
             LeaderBoardPages = new();
+        }
 
+        private void Start()
+        {
             var openLeaderBoardPages = transform.parent.GetComponentInChildren<LeaderBoardButton>().GetComponent<Button>();
             openLeaderBoardPages.onClick.AddListener(LeaderBoardCheck);
 
@@ -116,6 +119,8 @@ namespace Trivia.UI
         //Wait For Assign The Textes On Leader Board
         private IEnumerator SetPlayerTextes()
         {
+            yield return new WaitForSeconds(0.5f);
+
             int page = _playerDataAssigner.GetPage();
 
             //Wait For Load Datas From URL
