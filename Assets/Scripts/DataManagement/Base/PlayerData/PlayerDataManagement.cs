@@ -21,7 +21,7 @@ namespace Trivia.DataManagement
 
             for (int i = 0; i < players.Length; ++i)
             {
-                loadWebRequest[i] = LoadData<JsonDataPlayers>();
+                loadWebRequest[i] = LoadDataFromWeb<JsonDataPlayers>();
                 StartCoroutine(loadWebRequest[i]);
             }
         }

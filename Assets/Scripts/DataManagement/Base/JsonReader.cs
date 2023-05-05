@@ -30,7 +30,7 @@ namespace Trivia.DataManagement
             return data;
         }
 
-        protected IEnumerator LoadData<T>() where T : class
+        protected IEnumerator LoadDataFromWeb<T>() where T : class
         {
             for (int i = 0; i < jsonUrls.Length; ++i)
             {

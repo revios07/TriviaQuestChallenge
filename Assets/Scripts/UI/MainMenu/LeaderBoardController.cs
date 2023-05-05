@@ -30,7 +30,10 @@ namespace Trivia.UI
         #region Unity Calls
         private void Awake()
         {
-            LeaderBoardPages = new();
+            if(LeaderBoardPages == null || LeaderBoardPages.Count > 1)
+            {
+                LeaderBoardPages = new();
+            }
         }
 
         private void Start()
@@ -45,6 +48,8 @@ namespace Trivia.UI
             }
 
             LeaderBoardPages.Add(this.gameObject);
+
+            Debug.Log(LeaderBoardPages.Count);
 
             try
             {
@@ -131,6 +136,8 @@ namespace Trivia.UI
             {
                 //Create 1 more page for list players
                 GameObject nextPage = Instantiate(this.gameObject, transform.parent);
+                nextPage.transform.GetChild(0).gameObject.SetActive(false);
+                _changePageButtonGO.SetActive(false);
             }
 
             _playerPanelAssigners = new List<PlayerPanelAssigner>();

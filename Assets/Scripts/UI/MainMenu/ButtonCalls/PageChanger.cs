@@ -17,14 +17,7 @@ namespace Trivia.UI
         }
         private void OnDisable()
         {
-            //Close All Panels
-            for (int i = 0; i < LeaderBoardController.LeaderBoardPages.Count; ++i)
-            {
-                LeaderBoardController.LeaderBoardPages[i].transform.GetChild(0).gameObject.SetActive(false);
-            }
 
-            //Open First Page Default / On Opened Leader Board Enabled
-            LeaderBoardController.LeaderBoardPages[0].transform.GetChild(0).gameObject.SetActive(true);
         }
         private void Awake()
         {

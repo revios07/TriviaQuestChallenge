@@ -135,6 +135,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 255357463}
     m_Modifications:
+    - target: {fileID: 6495294392444786161, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495294392444786161, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495294392444786161, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495294392444786161, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6495294393498674192, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
       propertyPath: _changePageButtonGO
       value: 
@@ -805,10 +821,6 @@ PrefabInstance:
     - target: {fileID: 5863390213038666226, guid: fa976dfbd9a77ba4f989369a08291992, type: 3}
       propertyPath: m_Name
       value: QuestionDataAssigner
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863390213038666226, guid: fa976dfbd9a77ba4f989369a08291992, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5863390213038666227, guid: fa976dfbd9a77ba4f989369a08291992, type: 3}
       propertyPath: m_RootOrder
