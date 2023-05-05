@@ -7,13 +7,13 @@ namespace Trivia.UI
 {
     public class PageChanger : MonoBehaviour
     {
+        public int PageCounter { get; private set; } = 0; //Load First Page
         private AssignPlayerData _assignPlayerData;
-        private int _pageCounter = 0; //Load First Page
 
         #region Unity Calls
         private void OnEnable()
         {
-            _pageCounter = 0;
+            PageCounter = 0;
         }
         private void OnDisable()
         {
@@ -34,15 +34,15 @@ namespace Trivia.UI
 
         public void ChangePage()
         {
-            if (_pageCounter + 1 > LeaderBoardController.LeaderBoardPages.Count - 1)
+            if (PageCounter + 1 > LeaderBoardController.LeaderBoardPages.Count - 1)
             {
                 //Load First Page
-                _pageCounter = 0;
+                PageCounter = 0;
             }
             else
             {
                 //Load Next Page
-                ++_pageCounter;
+                ++PageCounter;
             }
 
             //Close All Panels
@@ -51,7 +51,12 @@ namespace Trivia.UI
                 LeaderBoardController.LeaderBoardPages[i].transform.GetChild(0).gameObject.SetActive(false);
             }
 
-            LeaderBoardController.LeaderBoardPages[_pageCounter].transform.GetChild(0).gameObject.SetActive(true);
+            LeaderBoardController.LeaderBoardPages[PageCounter].transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        public void SetCurrentPage(int page)
+        {
+            PageCounter = page;
         }
     }
 }

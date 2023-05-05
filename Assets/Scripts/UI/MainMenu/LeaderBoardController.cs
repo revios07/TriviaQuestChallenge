@@ -113,6 +113,10 @@ namespace Trivia.UI
                     if (_rectTransform.position.y <= -refenceResolutionY / 4f)
                     {
                         //Load Default Positions Of Players Text
+                        LeaderBoardPages[0].transform.GetChild(0).gameObject.SetActive(true);
+                        LeaderBoardPages[1].transform.GetChild(0).gameObject.SetActive(false);
+                        _changePageButtonGO.GetComponent<PageChanger>().SetCurrentPage(0);
+
                         _changePageButtonGO.SetActive(false);
                         break;
                     }

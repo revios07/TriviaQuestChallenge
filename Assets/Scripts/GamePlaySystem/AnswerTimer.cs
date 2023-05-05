@@ -20,7 +20,8 @@ namespace Trivia.GamePlay
         private void OnEnable()
         {
             EventsSystem.OnPlayerSelectedAnswer += StopTimer;
-            EventsSystem.OnPlayerSelectedAnswer += WaitAfterQuestionAnwered;
+            EventsSystem.OnPlayerSelectedAnswer += WaitAfterQuestionAnswered;
+            EventsSystem.NotSelectedAtTime += WaitAfterQuestionAnswered;
 
             EventsSystem.OnNextQuestionLoaded += LoadDefaultTime;
             EventsSystem.OnAllQuestionsComplete += GameEnded;
@@ -28,7 +29,8 @@ namespace Trivia.GamePlay
         private void OnDisable()
         {
             EventsSystem.OnPlayerSelectedAnswer -= StopTimer;
-            EventsSystem.OnPlayerSelectedAnswer -= WaitAfterQuestionAnwered;
+            EventsSystem.OnPlayerSelectedAnswer -= WaitAfterQuestionAnswered;
+            EventsSystem.NotSelectedAtTime -= WaitAfterQuestionAnswered;
 
             EventsSystem.OnNextQuestionLoaded -= LoadDefaultTime;
             EventsSystem.OnAllQuestionsComplete -= GameEnded;
@@ -69,7 +71,7 @@ namespace Trivia.GamePlay
         }
         #endregion
 
-        private void WaitAfterQuestionAnwered()
+        private void WaitAfterQuestionAnswered()
         {
             Invoke(nameof(LoadDefaultTime), _timeData.GetWaitTimeAfterAnswer() + 0.1f);
         }
