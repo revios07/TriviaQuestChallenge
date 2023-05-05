@@ -12,9 +12,6 @@ namespace Trivia.UI
     {
         public static List<GameObject> LeaderBoardPages { get; set; }
         [SerializeField]
-        [Header("Don't need to assign this!")]
-        private int _numberOfPlayerPages = -1;
-        [SerializeField]
         [Range(1f, 100f)]
         private float _leaderBoardMoveSpeed;
         [SerializeField]
