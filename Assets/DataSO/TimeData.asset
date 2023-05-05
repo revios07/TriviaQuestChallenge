@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: TimeData
   m_EditorClassIdentifier: 
   _timeData: 20
+  _getWaitTimeAfterAnswerQuestion: 2

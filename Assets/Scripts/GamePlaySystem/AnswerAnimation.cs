@@ -8,7 +8,11 @@ namespace Trivia.GamePlay
 {
     public class AnswerAnimation : MonoBehaviour
     {
+        [SerializeField]
+        private Trivia.Data.TimeSO _timeSO;
+
         private bool _isCorrectAnswer;
+        private bool _isGameEnded;
 
         private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
         private Button _answerButton;
@@ -18,9 +22,12 @@ namespace Trivia.GamePlay
         private void OnEnable()
         {
             GetComponent<Button>().onClick.AddListener(SelectedAnswer);
+            EventsSystem.OnAllQuestionsComplete += GameEnded;
         }
         private void OnDisable()
         {
+            EventsSystem.OnAllQuestionsComplete -= GameEnded;
+
             if (_isCorrectAnswer)
             {
                 EventsSystem.NotSelectedAtTime -= PlayCorrectAnimation;
@@ -70,17 +77,14 @@ namespace Trivia.GamePlay
         private IEnumerator AnimationCorrectChoise()
         {
             _answerButton.interactable = false;
-
-            yield return _waitForFixedUpdate;
-
             _buttonVisual.color = Color.green;
 
-            var animTimer = 3.0f;
+            var animTimer = _timeSO.GetWaitTimeAfterAnswer();
             var isScaleToUpper = true;
             var animationStartScale = transform.localScale;
 
             //Button Move Animation
-            while(animTimer > 0.0f)
+            while (animTimer > 0.0f)
             {
                 yield return _waitForFixedUpdate;
 
@@ -97,13 +101,10 @@ namespace Trivia.GamePlay
         private IEnumerator AnimationWrongChoise()
         {
             _answerButton.interactable = false;
-
-            yield return new WaitForFixedUpdate();
-
             _buttonVisual.color = Color.red;
 
-            var animTimer = 3.0f;
-            var isScaleToUpper = true;
+            var animTimer = _timeSO.GetWaitTimeAfterAnswer();
+            var isScaleToUpper = false;
             var animationStartScale = transform.localScale;
 
             //Button Move Animation
@@ -116,10 +117,44 @@ namespace Trivia.GamePlay
                 ButtonAnimationEffect(ref isScaleToUpper, ref animTimer, _isCorrectAnswer);
             }
 
-            yield return new WaitForSeconds(3f);
+            yield return _waitForFixedUpdate;
 
             //Load Defaults
             LoadDefaultButtonProperties(animationStartScale);
+        }
+        #endregion
+
+        #region Animation Effect
+        [Tooltip("Use With IEnumerator")]
+        private void ButtonAnimationEffect(ref bool isScaleToUpper, ref float animTimer, bool isCorrectAnswer)
+        {
+            if (isScaleToUpper)
+            {
+                transform.localScale += Vector3.one * 1f * Time.fixedDeltaTime;
+
+                if (animTimer <= (_timeSO.GetWaitTimeAfterAnswer() / 2f) && isCorrectAnswer)
+                {
+                    isScaleToUpper = false;
+                }
+            }
+            else if (!isScaleToUpper)
+            {
+                transform.localScale -= Vector3.one * 1f * Time.fixedDeltaTime;
+
+                if (animTimer <= (_timeSO.GetWaitTimeAfterAnswer() / 2f) && !isCorrectAnswer)
+                {
+                    isScaleToUpper = true;
+                }
+            }
+        }
+        private void LoadDefaultButtonProperties(Vector3 animationStartScale)
+        {
+            if (_isGameEnded)
+                return;
+
+            transform.localScale = animationStartScale;
+            _buttonVisual.color = Color.white;
+            _answerButton.interactable = true;
         }
         #endregion
 
@@ -138,44 +173,10 @@ namespace Trivia.GamePlay
                 EventsSystem.OnPlayerSelectedAnswer += PlayWrongAnimation;
             }
         }
-
-        [Tooltip("Use With IEnumerator")]
-        private void ButtonAnimationEffect(ref bool isScaleToUpper, ref float animTimer, bool isCorrectAnswer)
+        private void GameEnded()
         {
-            if (isScaleToUpper)
-            {
-                transform.localScale += Vector3.one * 10f * Time.fixedDeltaTime;
-
-                if (animTimer <= 1.5f && isCorrectAnswer)
-                {
-                    isScaleToUpper = false;
-                }
-            }
-            else if (!isScaleToUpper)
-            {
-                transform.localScale -= Vector3.one * 10f * Time.fixedDeltaTime;
-
-                if(animTimer <= 1.5f && !isCorrectAnswer)
-                {
-                    isScaleToUpper = true;
-                }
-            }
-        }
-
-        private void LoadDefaultButtonProperties(Vector3 animationStartScale)
-        {
-            transform.localScale = animationStartScale;
-            _buttonVisual.color = Color.white;
-            _answerButton.interactable = true;
-        }
-
-        private void CheckCalls()
-        {
-            
-        }
-        private void CloseCanClickable()
-        {
-            
+            _isGameEnded = true;
+            _answerButton.interactable = false;
         }
     }
 }

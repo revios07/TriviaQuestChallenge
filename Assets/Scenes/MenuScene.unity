@@ -135,22 +135,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 255357463}
     m_Modifications:
-    - target: {fileID: 6495294392444786161, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495294392444786161, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495294392444786161, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495294392444786161, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6495294393498674192, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
+      propertyPath: _changePageButtonGO
+      value: 
+      objectReference: {fileID: 345152621}
     - target: {fileID: 6495294393498674204, guid: e4521414604fdb64a9ac861763b74ca1, type: 3}
       propertyPath: m_Name
       value: LeaderBoardPanel
@@ -382,6 +370,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &345152621 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6230939264040622779, guid: 331f4e081df23a040969314489566f1e, type: 3}
+  m_PrefabInstance: {fileID: 5268538785792870733}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

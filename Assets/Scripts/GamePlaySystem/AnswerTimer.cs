@@ -19,11 +19,17 @@ namespace Trivia.GamePlay
         #region Unity Calls
         private void OnEnable()
         {
+            EventsSystem.OnPlayerSelectedAnswer += StopTimer;
+            EventsSystem.OnPlayerSelectedAnswer += WaitAfterQuestionAnwered;
+
             EventsSystem.OnNextQuestionLoaded += LoadDefaultTime;
             EventsSystem.OnAllQuestionsComplete += GameEnded;
         }
         private void OnDisable()
         {
+            EventsSystem.OnPlayerSelectedAnswer -= StopTimer;
+            EventsSystem.OnPlayerSelectedAnswer -= WaitAfterQuestionAnwered;
+
             EventsSystem.OnNextQuestionLoaded -= LoadDefaultTime;
             EventsSystem.OnAllQuestionsComplete -= GameEnded;
         }
@@ -62,11 +68,23 @@ namespace Trivia.GamePlay
             }
         }
         #endregion
+
+        private void WaitAfterQuestionAnwered()
+        {
+            Invoke(nameof(LoadDefaultTime), _timeData.GetWaitTimeAfterAnswer() + 0.1f);
+        }
         private void LoadDefaultTime()
         {
+            if (_isGameEnded)
+                return;
+
             _timeForQuestion = _timeData.GetAnswerTime();
             _timerText.color = Color.white;
             _isTimeEnded = false;
+        }
+        private void StopTimer()
+        {
+            _isTimeEnded = true;
         }
         private void GameEnded()
         {

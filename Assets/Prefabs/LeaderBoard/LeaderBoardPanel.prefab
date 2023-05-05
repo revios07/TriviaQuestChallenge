@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _numberOfPlayerPages: 1
   _leaderBoardMoveSpeed: 60
+  _changePageButtonGO: {fileID: 0}
 --- !u!114 &123973427458604866
 MonoBehaviour:
   m_ObjectHideFlags: 0

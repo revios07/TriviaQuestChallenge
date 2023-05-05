@@ -10,14 +10,15 @@ namespace Trivia.UI
     [RequireComponent(typeof(RectTransform))]
     public class LeaderBoardController : MonoBehaviour
     {
-        public static List<GameObject> LeaderBoardPages { get; set; } = new List<GameObject>();
-
+        public static List<GameObject> LeaderBoardPages { get; set; }
         [SerializeField]
         [Header("Don't need to assign this!")]
         private int _numberOfPlayerPages = -1;
         [SerializeField]
         [Range(1f, 100f)]
         private float _leaderBoardMoveSpeed;
+        [SerializeField]
+        private GameObject _changePageButtonGO;
 
         private RectTransform _rectTransform => this.gameObject.transform as RectTransform;
         private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
@@ -25,12 +26,12 @@ namespace Trivia.UI
 
         private AssignPlayerData _playerDataAssigner;
         private List<PlayerPanelAssigner> _playerPanelAssigners;
-        private GameObject _changePageButtonGO;
-
+     
         #region Unity Calls
-        private void Awake()
+        private void Start()
         {
-            _changePageButtonGO = transform.parent.GetComponentInChildren<PageChanger>().gameObject;
+            LeaderBoardPages = new();
+
             var openLeaderBoardPages = transform.parent.GetComponentInChildren<LeaderBoardButton>().GetComponent<Button>();
             openLeaderBoardPages.onClick.AddListener(LeaderBoardCheck);
 
@@ -50,9 +51,7 @@ namespace Trivia.UI
             {
                 Debug.LogError("Add Player Data Assigner Prefab to Scene!");
             }
-        }
-        private void Start()
-        {
+
             StartCoroutine(SetPlayerTextes());
         }
         #endregion

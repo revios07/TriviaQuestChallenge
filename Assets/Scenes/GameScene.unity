@@ -1099,45 +1099,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 77919951}
     m_Modifications:
-    - target: {fileID: 7770800330216806989, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800330216806989, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800330216806989, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800330216806989, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800330216806989, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800330216806989, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 101
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800330216806989, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800330216806989, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 342
-      objectReference: {fileID: 0}
     - target: {fileID: 7770800331296461448, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
       propertyPath: m_Name
       value: Question
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800331296461454, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7770800331296461455, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
       propertyPath: m_Pivot.x
@@ -1222,50 +1186,6 @@ PrefabInstance:
     - target: {fileID: 7770800331296461455, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800331672105659, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800331672105659, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800331672105659, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800331672105659, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800331672105659, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800331672105659, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 7770800331672105659, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8408870972973682937, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_Name
-      value: SelectAnswerButton Variant A
-      objectReference: {fileID: 0}
-    - target: {fileID: 8867851891746718353, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_Name
-      value: SelectAnswerButton Variant D
-      objectReference: {fileID: 0}
-    - target: {fileID: 8867851892295711026, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_Name
-      value: SelectAnswerButton Variant C
-      objectReference: {fileID: 0}
-    - target: {fileID: 8867851892424873921, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
-      propertyPath: m_Name
-      value: SelectAnswerButton Variant B
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3983f511b3cdd64a90805e82ead35e5, type: 3}
