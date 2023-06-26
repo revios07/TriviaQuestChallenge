@@ -1,5 +1,3 @@
-# MageGamesCase
- 
 Project:
 Unity Version: 2021.3.24f1
 Classic Trivia Game with Read jsonData from web or in project
